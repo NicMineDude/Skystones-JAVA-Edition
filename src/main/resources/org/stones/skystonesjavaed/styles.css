@@ -1,0 +1,67 @@
+.button {
+    -fx-background-color: linear-gradient(to right, #eee3c6, #FFFFFF);
+    -fx-text-fill: a67805;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-border-radius: 1;
+    -fx-cursor: hand;
+    -fx-border-color: #a67805;
+}
+
+/* Hover state */
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #c9ad65, #FFFFFF);
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-width: 3;
+}
+
+/* Pressed (armed) state */
+.button:pressed {
+    -fx-background-color: linear-gradient(to right, #d5a939, #FFFFFF);
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-width: 3;
+}
+
+.button:disabled {
+    -fx-background-color: linear-gradient(to right, #eee3c6, #FFFFFF);
+        -fx-text-fill: a67805;
+        -fx-font-size: 14px;
+        -fx-font-weight: bold;
+        -fx-border-width: 2px;
+        -fx-border-radius: 1;
+        -fx-cursor: default;
+        -fx-border-color: #a67805;
+        -fx-opacity: 1.0;
+}
+
+.slider {
+    -fx-padding: 10;
+}
+
+.slider .track {
+    -fx-background-color: linear-gradient(to right, #c9ad65, #FFFFFF);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-pref-height: 6;
+}
+
+.slider .thumb {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, #c9ad65, 8, 0.5, 0, 0);
+    -fx-background-radius: 25%;
+    -fx-pref-width: 16;
+    -fx-pref-height: 32;
+    -fx-cursor: hand;
+}
+
+.slider:hover .thumb {
+    -fx-effect: dropshadow(gaussian, #c18b01, 10, 0.4, 0, 0);
+}
+
+.slider .track:hover {
+    -fx-background-color: linear-gradient(to right, #c18b01, #FFFFFF);
+}
