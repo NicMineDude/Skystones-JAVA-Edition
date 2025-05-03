@@ -1,4 +1,5 @@
 package org.stones.skystonesjavaed;
+//import com.almasb.fxgl.app.GameApplication;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -20,7 +21,6 @@ public class GameApp extends Application {
     public static int windowWidth = 1366;
     public static int windowHeight = 768;
 
-
     public GameApp(){
         this.model = new GameEngine();
         this.view = new GameView(model);
@@ -37,6 +37,19 @@ public class GameApp extends Application {
         EventHandler<MouseEvent> update = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                if (view.getCurrentMenu() == GameView.OPTIONPANE_INDEX){
+                    view.getMusic().getMusicMediaPlayer().volumeProperty().bind(view.getOptionPane().getMusicSlider().valueProperty());
+                    view.getClickSFX().getMusicMediaPlayer().volumeProperty().bind(view.getOptionPane().getSfxSlider().valueProperty());
+                    view.getInGameOptionPane().getMusicSlider().setValue(MusicPlayer.MUSIC_VOL);
+                    view.getInGameOptionPane().getSfxSlider().setValue(MusicPlayer.SFX_VOL);
+                } else {
+                    view.getMusic().getMusicMediaPlayer().volumeProperty().bind(view.getInGameOptionPane().getMusicSlider().valueProperty());
+                    view.getClickSFX().getMusicMediaPlayer().volumeProperty().bind(view.getInGameOptionPane().getSfxSlider().valueProperty());
+                    view.getOptionPane().getMusicSlider().setValue(MusicPlayer.MUSIC_VOL);
+                    view.getOptionPane().getSfxSlider().setValue(MusicPlayer.SFX_VOL);
+                }
+                MusicPlayer.SFX_VOL = view.getClickSFX().getMusicMediaPlayer().volumeProperty().getValue();
+                MusicPlayer.MUSIC_VOL = view.getMusic().getMusicMediaPlayer().volumeProperty().getValue();
                 view.update();
             }
         };
@@ -74,6 +87,59 @@ public class GameApp extends Application {
                 view.getSlide().playFromStart();
             }
         });
+
+        view.getGamePane().getOptionsButton().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                view.getClickSFX().getMusicMediaPlayer().play();
+                view.getClickSFX().getMusicMediaPlayer().seek(Duration.ZERO);
+                PauseTransition delay = new PauseTransition(Duration.seconds(0.5));
+                delay.setOnFinished(e -> {
+                    view.getInGameOptionPane().setDisable(false);
+                    view.getInGameOptionPane().setVisible(true);
+                });
+                delay.play();
+            }
+        });
+
+        view.getInGameOptionPane().getBackToGame().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                view.getClickSFX().getMusicMediaPlayer().play();
+                view.getClickSFX().getMusicMediaPlayer().seek(Duration.ZERO);
+                PauseTransition delay = new PauseTransition(Duration.seconds(0.5));
+                delay.setOnFinished(e -> {
+                    view.getInGameOptionPane().setDisable(true);
+                    view.getInGameOptionPane().setVisible(false);
+                });
+                delay.play();
+            }
+        });
+
+        view.getInGameOptionPane().getBackToMenu().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                view.getClickSFX().getMusicMediaPlayer().play();
+                view.getClickSFX().getMusicMediaPlayer().seek(Duration.ZERO);
+                view.getGamePane().getBackToMenu().setDisable(true);
+                PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
+                delay.setOnFinished(e -> {
+                    view.setCurrentMenu(GameView.MENUPANE_INDEX);
+                    model.resetGame();
+                    view.resetGameView();
+                    view.update();
+                    view.getInGameOptionPane().setDisable(true);
+                    view.getInGameOptionPane().setVisible(false);
+                });
+                delay.play();
+                view.getSlide().playFromStart();
+            }
+        });
+
+
+
+        view.getInGameOptionPane().getMusicSlider().addEventHandler(MouseEvent.MOUSE_DRAGGED, update);
+        view.getInGameOptionPane().getSfxSlider().addEventHandler(MouseEvent.MOUSE_DRAGGED, update);
 
         Button menuButton = view.getMenuPane().getPlayButton();
         menuButton.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {

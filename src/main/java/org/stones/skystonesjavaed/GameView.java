@@ -18,11 +18,13 @@ public class GameView extends Pane {
     private GamePane gamePane;
     private OptionPane optionPane;
     private DeckBuilderPane deckBuilderPane;
+    private InGameOptionPane inGameOptionPane;
 
     public static final int MENUPANE_INDEX = 0;
     public static final int GAMEPANE_INDEX = 1;
     public static final int OPTIONPANE_INDEX = 2;
     public static final int DECKBUILDERPANE_INDEX = 3;
+    public static final int INGAMEOPTIONPANE_INDEX = 4;
 
     private int currentMenu = 0;
     private Pane[] menuArray;
@@ -56,6 +58,11 @@ public class GameView extends Pane {
         deckBuilderPane.setVisible(false);
         deckBuilderPane.setDisable(true);
 
+        inGameOptionPane = new InGameOptionPane(model);
+        inGameOptionPane.setPrefSize(GameApp.windowWidth,GameApp.windowHeight);
+        inGameOptionPane.setVisible(false);
+        inGameOptionPane.setDisable(true);
+
         //To be made into a transition Player!!!
         Rectangle rect = new Rectangle(GameApp.windowWidth*2, 769, Color.BLACK);
         rect.setLayoutX(-GameApp.windowWidth*2);
@@ -77,7 +84,7 @@ public class GameView extends Pane {
 
         menuArray = new Pane[]{menuPane, gamePane, optionPane, deckBuilderPane};
 
-        getChildren().addAll(menuPane, gamePane,optionPane, deckBuilderPane, rect);
+        getChildren().addAll(menuPane, gamePane, optionPane, deckBuilderPane, inGameOptionPane, rect);
     }
 
     public void resetGameView() {
@@ -109,6 +116,8 @@ public class GameView extends Pane {
         gamePane.getReset().setVisible(false);
         gamePane.getBackToMenu().setDisable(true);
         gamePane.getBackToMenu().setVisible(false);
+        gamePane.getOptionsButton().setDisable(false);
+        gamePane.getOptionsButton().setVisible(true);
         gamePane.getWinMessage().setVisible(false);
 
         //Resets selected tile back to unslected (-1).
@@ -119,8 +128,12 @@ public class GameView extends Pane {
     public void update(){
 
         //Updates music volume label
-        optionPane.getMusicVolLabel().setText("Music Volume: "+ String.format("%.2f", optionPane.getMusicSlider().getValue()*100));
-        optionPane.getSfxVolLabel().setText("SFX Volume: "+ String.format("%.2f", optionPane.getSfxSlider().getValue()*100));
+        optionPane.getMusicVolLabel().setText("Music Volume: "+ String.format("%.2f", MusicPlayer.MUSIC_VOL*100));
+        optionPane.getSfxVolLabel().setText("SFX Volume: "+ String.format("%.2f", MusicPlayer.SFX_VOL*100));
+
+        inGameOptionPane.getMusicVolLabel().setText("Music Volume: "+ String.format("%.2f", MusicPlayer.MUSIC_VOL*100));
+        inGameOptionPane.getSfxVolLabel().setText("SFX Volume: "+ String.format("%.2f", MusicPlayer.SFX_VOL*100));
+
 
         //
         if (menuPane.getPlayButton().isDisabled() || gamePane.getBackToMenu().isDisabled()){
@@ -170,6 +183,8 @@ public class GameView extends Pane {
             gamePane.getBackToMenu().setVisible(true);
             gamePane.getReset().setDisable(false);
             gamePane.getReset().setVisible(true);
+            gamePane.getOptionsButton().setDisable(true);
+            gamePane.getOptionsButton().setVisible(false);
         }
 
         gamePane.getP1Label().setText("Player 1   " + model.getP1Score());
@@ -182,9 +197,11 @@ public class GameView extends Pane {
     public GamePane getGamePane() {return gamePane;}
     public OptionPane getOptionPane() {return optionPane;}
     public DeckBuilderPane getDeckBuilderPane() {return deckBuilderPane;}
+    public InGameOptionPane getInGameOptionPane() {return inGameOptionPane;}
     public TranslateTransition getSlide(){return slide;}
     public MusicPlayer getClickSFX(){return clickSFX;}
-    public void setCurrentMenu(int index) {this.currentMenu = index;}
     public MusicPlayer getMusic(){return music;}
+    public void setCurrentMenu(int index) {this.currentMenu = index;}
+    public int getCurrentMenu() {return currentMenu;}
 
 }

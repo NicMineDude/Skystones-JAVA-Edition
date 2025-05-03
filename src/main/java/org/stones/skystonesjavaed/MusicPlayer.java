@@ -25,6 +25,4 @@ public class MusicPlayer {
     public void stopMusic() {
         mediaPlayer.stop();
     }
-
-
 }

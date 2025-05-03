@@ -1,5 +1,8 @@
 package org.stones.skystonesjavaed;
-public class Stone {
+
+import java.io.Serializable;
+
+public class Stone implements Serializable {
 
     public static final int WIDTH = 125;
     public static final int HEIGHT = 125;

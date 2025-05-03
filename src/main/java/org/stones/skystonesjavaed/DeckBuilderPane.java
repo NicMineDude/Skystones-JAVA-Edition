@@ -26,11 +26,7 @@ public class DeckBuilderPane extends Pane {
         backToMenu.setLayoutX(centerXBack - backToMenu.getPrefWidth() / 2);
         backToMenu.setLayoutY(centerYBack - backToMenu.getPrefHeight() / 2);
 
-
-
-
-
-        bgVideo = new VideoPlayer("videoAssets/deckBuilderBg.mp4", MediaPlayer.INDEFINITE, 0.25, 0.5, GameApp.windowWidth, GameApp.windowHeight);
+        bgVideo = new VideoPlayer("videoAssets/deckBuildBg.mp4", MediaPlayer.INDEFINITE, 0.25, 0.5, GameApp.windowWidth, GameApp.windowHeight);
         bgVideo.getVideoMediaPlayer().play();
 
         getChildren().addAll(bgVideo.getVideoMediaView(), backToMenu);

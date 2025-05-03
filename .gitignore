@@ -42,6 +42,7 @@ bin/
 .DS_Store
 
 # MP4 Files
-.mp4
+*.mp4
 
-# Something else
+# decks save
+decks.txt
