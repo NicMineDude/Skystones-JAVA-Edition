@@ -1,8 +1,11 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.model;
+
+import org.stones.skystonesjavaed.view.BoardTile;
+
 public class GameEngine {
 
 
-    BoardTile[] gameBoard;
+    public BoardTile[] gameBoard;
     private Player player1;
     private Player player2;
     private Player turnHolder;

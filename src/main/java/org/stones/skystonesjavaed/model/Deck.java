@@ -1,4 +1,5 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.model;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

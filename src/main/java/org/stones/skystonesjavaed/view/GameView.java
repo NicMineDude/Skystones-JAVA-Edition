@@ -1,15 +1,16 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.view;
+
 import javafx.animation.TranslateTransition;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import org.stones.skystonesjavaed.config.MusicPlayer;
+import org.stones.skystonesjavaed.controller.GameApp;
+import org.stones.skystonesjavaed.model.GameEngine;
 
 public class GameView extends Pane {
     private GameEngine model;

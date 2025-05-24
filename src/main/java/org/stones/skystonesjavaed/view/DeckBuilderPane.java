@@ -1,11 +1,11 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.view;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 
 import javafx.scene.media.MediaPlayer;
-
+import org.stones.skystonesjavaed.model.GameEngine;
+import org.stones.skystonesjavaed.config.VideoPlayer;
+import org.stones.skystonesjavaed.controller.GameApp;
 
 
 public class DeckBuilderPane extends Pane {

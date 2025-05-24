@@ -1,7 +1,8 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.view;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
+import org.stones.skystonesjavaed.model.GameEngine;
 
 public class GridPane extends TilePane{
 

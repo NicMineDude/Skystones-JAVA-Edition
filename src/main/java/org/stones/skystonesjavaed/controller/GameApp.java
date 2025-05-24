@@ -1,18 +1,22 @@
-package org.stones.skystonesjavaed;
-//import com.almasb.fxgl.app.GameApplication;
+package org.stones.skystonesjavaed.controller;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.util.Duration;
+import org.stones.skystonesjavaed.config.MusicPlayer;
+import org.stones.skystonesjavaed.model.GameEngine;
+import org.stones.skystonesjavaed.view.GameView;
+import org.stones.skystonesjavaed.view.GridCellPane;
+import org.stones.skystonesjavaed.view.StonePane;
+
 import java.io.IOException;
 
 public class GameApp extends Application {

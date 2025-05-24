@@ -1,6 +1,6 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.view;
 
-import javafx.scene.shape.Rectangle;
+import org.stones.skystonesjavaed.model.Stone;
 
 public class BoardTile {
 

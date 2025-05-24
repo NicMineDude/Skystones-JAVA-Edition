@@ -1,7 +1,6 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.view;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 
 public class GridCellPane extends ImageView {
 

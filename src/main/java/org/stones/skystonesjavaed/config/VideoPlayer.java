@@ -1,4 +1,4 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.config;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
