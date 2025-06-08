@@ -1,8 +1,11 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.view;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.MediaPlayer;
+import org.stones.skystonesjavaed.config.VideoPlayer;
+import org.stones.skystonesjavaed.controller.GameApp;
+import org.stones.skystonesjavaed.model.GameEngine;
 
 public class GamePane extends Pane {
 
@@ -10,6 +13,7 @@ public class GamePane extends Pane {
 
     private Button backToMenu;
     private Button reset;
+    private Button optionsButton;
 
     private Label winMessage;
     private Label p1Label;
@@ -42,6 +46,13 @@ public class GamePane extends Pane {
         reset.setLayoutY(centerYReset - reset.getPrefHeight() / 2);
         reset.setDisable(true);
         reset.setVisible(false);
+
+        optionsButton = new Button("Options");
+        optionsButton.setPrefSize(100, 50);
+        double centerXOpBut = 683;
+        double centerYOpbut = 725;
+        optionsButton.setLayoutX(centerXOpBut - optionsButton.getPrefWidth() / 2);
+        optionsButton.setLayoutY(centerYOpbut - optionsButton.getPrefHeight() / 2);
 
         winMessage = new Label("Base");
         winMessage.relocate(575, 50);
@@ -79,11 +90,12 @@ public class GamePane extends Pane {
         bgVideo.getVideoMediaPlayer().play();
 
 
-        getChildren().addAll(bgVideo.getVideoMediaView(), backToMenu, reset, gameBoardPane, playedStonePane, stonePaneP1, stonePaneP2, winMessage, p1Label, p2Label);
+        getChildren().addAll(bgVideo.getVideoMediaView(), backToMenu, reset, gameBoardPane, playedStonePane, stonePaneP1, stonePaneP2, winMessage, p1Label, p2Label, optionsButton);
     }
 
     public Button getBackToMenu() {return backToMenu;}
     public Button getReset() {return reset;}
+    public Button getOptionsButton() {return optionsButton;}
     public GridPane getGameBoardPane() {return gameBoardPane;}
     public PlayedStonePane getPlayedStonePane() {return playedStonePane;}
     public StonePane getStonePaneP1() {return stonePaneP1;}

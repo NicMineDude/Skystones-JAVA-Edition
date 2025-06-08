@@ -1,9 +1,9 @@
-package org.stones.skystonesjavaed;
-import javafx.scene.control.Label;
+package org.stones.skystonesjavaed.view;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.image.Image;
+import org.stones.skystonesjavaed.model.Player;
+import org.stones.skystonesjavaed.model.Stone;
 
 public class StonePane extends TilePane {
 

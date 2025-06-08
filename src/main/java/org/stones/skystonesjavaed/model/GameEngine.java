@@ -1,8 +1,11 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.model;
+
+import org.stones.skystonesjavaed.view.BoardTile;
+
 public class GameEngine {
 
 
-    BoardTile[] gameBoard;
+    public BoardTile[] gameBoard;
     private Player player1;
     private Player player2;
     private Player turnHolder;
@@ -10,7 +13,9 @@ public class GameEngine {
     private int p1Score = 0;
     private int p2Score = 0;
 
-    private int n = 3;
+    public static int n = 3;
+
+    private DeckBuilderEngine deckModel;
 
     public GameEngine() {
         this.player1 = new Player(true, "Player 1");
@@ -43,6 +48,7 @@ public class GameEngine {
             }
         }
     }
+
 
     public void resetGame(){
         this.player1.setActiveDeck(player1.getDecks().getFirst());

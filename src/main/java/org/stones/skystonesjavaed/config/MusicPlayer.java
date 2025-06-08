@@ -1,8 +1,7 @@
-package org.stones.skystonesjavaed;
+package org.stones.skystonesjavaed.config;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
-import javafx.util.Duration;
 
 public class MusicPlayer {
 
@@ -25,6 +24,4 @@ public class MusicPlayer {
     public void stopMusic() {
         mediaPlayer.stop();
     }
-
-
 }
