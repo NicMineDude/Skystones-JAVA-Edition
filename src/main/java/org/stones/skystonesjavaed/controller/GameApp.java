@@ -17,6 +17,9 @@ import org.stones.skystonesjavaed.view.GameView;
 import org.stones.skystonesjavaed.view.GridCellPane;
 import org.stones.skystonesjavaed.view.StonePane;
 
+//IF YOU DO ./graldew clean MAKE SURE TO FOLLOW IT UP WITH ./gradlew build OR ELSE PROJECT WON'T RUN PROPERLY
+//ALSO IF INTELLIJ CAN'T RECOGNIZE JAVAFX MAKE SURE TO SYNC ALL GRADLE PROJECTS (THE ELEPHANT ICON TO THE RIGHT)
+
 import java.io.IOException;
 
 public class GameApp extends Application {
@@ -326,7 +329,7 @@ public class GameApp extends Application {
         }
 
         primaryStage.setResizable(false);
-        primaryStage.setTitle("Skystones JAVA");
+        primaryStage.setTitle("Skystones JAVA Edition");
         primaryStage.getIcons().add(new Image("file:assets/icon.png"));
         primaryStage.setScene(menuScene);
         primaryStage.show();
