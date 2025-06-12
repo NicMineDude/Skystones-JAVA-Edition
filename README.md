@@ -4,7 +4,7 @@
 
 Whether you're a longtime fan or discovering Skystones for the first time, this project captures the spirit of the original and adds new twists for a modern audience.
 
-(The new rule make the game fair against another real life player! 😊)
+(The new rules make the game fair against another real life player! 😊)
 
 This project was a chance for me to get comfortable with making games in Java and learn more about the language in the process, using JavaFX for the interface.
 
