@@ -22,7 +22,12 @@ Watch this Demo **VIDEO!**
 [![Watch the demo](https://img.youtube.com/vi/jUcAgqf2Rsg/maxresdefault.jpg
 )](https://youtu.be/jUcAgqf2Rsg)
 
-## Getting Started
+## [Contribute](CONTRIBUTE.md)
+Contributing is pretty simple!
+
+
+
+## Download
 **Coming soon!** Instructions on how to build, run, and play the game.
 
 ---
