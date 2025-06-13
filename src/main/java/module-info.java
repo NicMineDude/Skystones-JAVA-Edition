@@ -5,9 +5,9 @@ module org.stones.skystonesjavaed {
 
     requires org.controlsfx.controls;
     requires com.almasb.fxgl.all;
+    requires jdk.jdi;
 
     opens org.stones.skystonesjavaed to javafx.fxml;
-//    exports org.stones.skystonesjavaed;
     exports org.stones.skystonesjavaed.controller;
     opens org.stones.skystonesjavaed.controller to javafx.fxml;
     exports org.stones.skystonesjavaed.view;

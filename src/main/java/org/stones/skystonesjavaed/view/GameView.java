@@ -1,6 +1,6 @@
 package org.stones.skystonesjavaed.view;
 
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import org.stones.skystonesjavaed.config.MusicPlayer;
+import org.stones.skystonesjavaed.config.TranslatePlayer;
 import org.stones.skystonesjavaed.controller.GameApp;
 import org.stones.skystonesjavaed.model.GameEngine;
 
@@ -48,6 +49,13 @@ public class GameView extends Pane {
         gamePane.setVisible(false);
         gamePane.setDisable(true);
 
+        TranslatePlayer bounceP1 = new TranslatePlayer(Duration.millis(800),gamePane.getStonePaneP1().getHotBar(), true, Animation.INDEFINITE, Interpolator.EASE_IN);
+        TranslatePlayer bounceP2 = new TranslatePlayer(Duration.millis(800),gamePane.getStonePaneP2().getHotBar(), true, Animation.INDEFINITE, Interpolator.EASE_IN);
+
+        bounceP1.transition.setByY(-3);
+        bounceP1.transition.play();
+        bounceP2.transition.setByY(-3);
+        bounceP2.transition.play();
 
         optionPane = new OptionPane(model);
         optionPane.setPrefSize(GameApp.windowWidth,GameApp.windowHeight);
@@ -135,8 +143,6 @@ public class GameView extends Pane {
         inGameOptionPane.getMusicVolLabel().setText("Music Volume: "+ String.format("%.2f", MusicPlayer.MUSIC_VOL*100));
         inGameOptionPane.getSfxVolLabel().setText("SFX Volume: "+ String.format("%.2f", MusicPlayer.SFX_VOL*100));
 
-
-        //
         if (menuPane.getPlayButton().isDisabled() || gamePane.getBackToMenu().isDisabled()){
             menuPane.getPlayButton().setDisable(false);
             gamePane.getBackToMenu().setDisable(false);
@@ -192,8 +198,6 @@ public class GameView extends Pane {
         gamePane.getP2Label().setText("Player 2   " + model.getP2Score());
     }
 
-
-
     public MenuPane getMenuPane() {return menuPane;}
     public GamePane getGamePane() {return gamePane;}
     public OptionPane getOptionPane() {return optionPane;}
@@ -204,5 +208,4 @@ public class GameView extends Pane {
     public MusicPlayer getMusic(){return music;}
     public void setCurrentMenu(int index) {this.currentMenu = index;}
     public int getCurrentMenu() {return currentMenu;}
-
 }
