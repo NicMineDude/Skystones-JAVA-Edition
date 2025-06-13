@@ -31,6 +31,7 @@ public class GameApp extends Application {
     public GameApp(){
         this.model = new GameEngine();
         this.view = new GameView(model);
+        System.out.println("the one piece?????");
     }
 
     public void start(Stage primaryStage) throws IOException {
