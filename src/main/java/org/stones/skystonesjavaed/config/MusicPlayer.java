@@ -17,6 +17,9 @@ public class MusicPlayer {
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(times); // loop music
         mediaPlayer.setVolume(volume); // volume from 0.0 to 1.0
+        mediaPlayer.setOnReady(() -> {
+            System.out.println("Ready to play");
+        });
     }
 
     public MediaPlayer getMusicMediaPlayer(){return mediaPlayer;}

@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.util.Duration;
 import org.stones.skystonesjavaed.config.MusicPlayer;
 import org.stones.skystonesjavaed.model.GameEngine;
+import org.stones.skystonesjavaed.view.AnimatedStones;
 import org.stones.skystonesjavaed.view.GameView;
 import org.stones.skystonesjavaed.view.GridCellPane;
 import org.stones.skystonesjavaed.view.StonePane;
@@ -254,6 +255,8 @@ public class GameApp extends Application {
             view.getGamePane().getPlayedStonePane().getPsTilePane().getChildren().get(i).addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                    view.getClickSFX().getMusicMediaPlayer().seek(Duration.ZERO);
+                    view.getClickSFX().getMusicMediaPlayer().play();
                     GridCellPane clickedRect = (GridCellPane) mouseEvent.getSource();
 
                     int boardIndex = view.getGamePane().getPlayedStonePane().getPsTilePane().getChildren().indexOf(clickedRect);
@@ -275,7 +278,6 @@ public class GameApp extends Application {
                         view.update();
                         turnHolderPane.setSelectedTile(-1);
                         model.setTurnHolder(model.getTurnHolder() == model.getPlayer1() ? model.getPlayer2() : model.getPlayer1());
-
                     }
                 }
             });
@@ -287,18 +289,20 @@ public class GameApp extends Application {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     StonePane p1StonePane = view.getGamePane().getStonePaneP1();
-                    ImageView clickedImage = (ImageView) mouseEvent.getSource();
+                    AnimatedStones clickedImage = (AnimatedStones) mouseEvent.getSource();
                     int liveIndex = p1StonePane.getHotBar().getChildren().indexOf(clickedImage);
 
                     //Sets color back to og color
                     if (p1StonePane.getSelectedTile() < p1StonePane.getHotBar().getChildren().size() && p1StonePane.getSelectedTile() >= 0) {
                         if (p1StonePane.getSelectedTile() != liveIndex) {
                             p1StonePane.getHotBar().getChildren().get(p1StonePane.getSelectedTile()).setTranslateX(0);
+                            ((AnimatedStones) p1StonePane.getHotBar().getChildren().get(p1StonePane.getSelectedTile())).stopRotation();
                         }
                     }
                     p1StonePane.setSelectedTile(liveIndex);
                     p1StonePane.getHotBar().getChildren().get(p1StonePane.getSelectedTile()).setTranslateX(20);
-                    p1StonePane.setSelectedTile(p1StonePane.getSelectedTile());
+                    ((AnimatedStones) p1StonePane.getHotBar().getChildren().get(p1StonePane.getSelectedTile())).getRotationAnim().play();
+
                 }
             });
         }
@@ -316,12 +320,13 @@ public class GameApp extends Application {
                     if (p2StonePane.getSelectedTile() < p2StonePane.getHotBar().getChildren().size() && p2StonePane.getSelectedTile() >= 0){
                         if (p2StonePane.getSelectedTile() != liveIndex) {
                             p2StonePane.getHotBar().getChildren().get(p2StonePane.getSelectedTile()).setTranslateX(0);
+                            ((AnimatedStones) p2StonePane.getHotBar().getChildren().get(p2StonePane.getSelectedTile())).stopRotation();
                         }
                     }
 
                     p2StonePane.setSelectedTile(liveIndex);
                     p2StonePane.getHotBar().getChildren().get(p2StonePane.getSelectedTile()).setTranslateX(-20);
-                    p2StonePane.setSelectedTile(p2StonePane.getSelectedTile());
+                    ((AnimatedStones) p2StonePane.getHotBar().getChildren().get(p2StonePane.getSelectedTile())).getRotationAnim().play();
                 }
             });
         }
