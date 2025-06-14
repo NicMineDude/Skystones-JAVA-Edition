@@ -49,12 +49,12 @@ public class GameView extends Pane {
         gamePane.setVisible(false);
         gamePane.setDisable(true);
 
-        TranslatePlayer bounceP1 = new TranslatePlayer(Duration.millis(800),gamePane.getStonePaneP1().getHotBar(), true, Animation.INDEFINITE, Interpolator.EASE_IN);
-        TranslatePlayer bounceP2 = new TranslatePlayer(Duration.millis(800),gamePane.getStonePaneP2().getHotBar(), true, Animation.INDEFINITE, Interpolator.EASE_IN);
+        TranslatePlayer bounceP1 = new TranslatePlayer(Duration.millis(900),gamePane.getStonePaneP1().getHotBar(), true, Animation.INDEFINITE, Interpolator.EASE_BOTH);
+        TranslatePlayer bounceP2 = new TranslatePlayer(Duration.millis(900),gamePane.getStonePaneP2().getHotBar(), true, Animation.INDEFINITE, Interpolator.EASE_BOTH);
 
-        bounceP1.transition.setByY(-3);
+        bounceP1.transition.setByY(-4);
         bounceP1.transition.play();
-        bounceP2.transition.setByY(-3);
+        bounceP2.transition.setByY(-4);
         bounceP2.transition.play();
 
         optionPane = new OptionPane(model);
@@ -88,7 +88,7 @@ public class GameView extends Pane {
         music.getMusicMediaPlayer().play();
         music.getMusicMediaPlayer().volumeProperty().bind(optionPane.getMusicSlider().valueProperty());
 
-        clickSFX = new MusicPlayer("music/stonesfxclick.mp3" , 1, MusicPlayer.SFX_VOL);
+        clickSFX = new MusicPlayer("music/stoneSFX2.mp3" , 1, MusicPlayer.SFX_VOL);
         clickSFX.getMusicMediaPlayer().volumeProperty().bind(optionPane.getSfxSlider().valueProperty());
 
         menuArray = new Pane[]{menuPane, gamePane, optionPane, deckBuilderPane};
@@ -107,16 +107,17 @@ public class GameView extends Pane {
         }
         //Reset the stones position and ability and visility inside the their STONEPANES!
         for (int i = 0; i < model.getPlayer1().getActiveDeck().getStones().size(); i++){
-            ImageView p1Stones =  (ImageView) gamePane.getStonePaneP1().getHotBar().getChildren().get(i);
-            ImageView p2Stones = (ImageView) gamePane.getStonePaneP2().getHotBar().getChildren().get(i);
+            AnimatedStones p1Stones =  (AnimatedStones) gamePane.getStonePaneP1().getHotBar().getChildren().get(i);
+            AnimatedStones p2Stones = (AnimatedStones) gamePane.getStonePaneP2().getHotBar().getChildren().get(i);
 
+            p1Stones.stopRotation();
             p1Stones.setVisible(true);
             p1Stones.setDisable(false);
+            p1Stones.setTranslateX(0);
 
+            p2Stones.stopRotation();
             p2Stones.setVisible(true);
             p2Stones.setDisable(false);
-
-            p1Stones.setTranslateX(0);
             p2Stones.setTranslateX(0);
         }
 
@@ -127,7 +128,7 @@ public class GameView extends Pane {
         gamePane.getBackToMenu().setVisible(false);
         gamePane.getOptionsButton().setDisable(false);
         gamePane.getOptionsButton().setVisible(true);
-        gamePane.getWinMessage().setVisible(false);
+        gamePane.getTopMsg().setVisible(false);
 
         //Resets selected tile back to unslected (-1).
         gamePane.getStonePaneP1().setSelectedTile(-1);
@@ -182,8 +183,8 @@ public class GameView extends Pane {
                 p2Stones.setDisable(true);
                 p2Stones.setVisible(false);
             }
-            gamePane.getWinMessage().setVisible(true);
-            gamePane.getWinMessage().setText(model.getP1Score() > model.getP2Score() ? "PLAYER 1 WINS!"
+            gamePane.getTopMsg().setVisible(true);
+            gamePane.getTopMsg().setText(model.getP1Score() > model.getP2Score() ? "PLAYER 1 WINS!"
                     : model.getP1Score() == model.getP2Score() ? "TIE! Score "
                     : "PLAYER 2 WINS!" );
             gamePane.getBackToMenu().setDisable(false);
@@ -194,8 +195,8 @@ public class GameView extends Pane {
             gamePane.getOptionsButton().setVisible(false);
         }
 
-        gamePane.getP1Label().setText("Player 1   " + model.getP1Score());
-        gamePane.getP2Label().setText("Player 2   " + model.getP2Score());
+        gamePane.getP1Label().setText(""+model.getP1Score());
+        gamePane.getP2Label().setText(""+model.getP2Score());
     }
 
     public MenuPane getMenuPane() {return menuPane;}
