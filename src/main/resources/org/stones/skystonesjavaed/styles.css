@@ -1,40 +1,37 @@
 .button {
-    -fx-background-color: linear-gradient(to right, #d0b87a, #FFFFFF);
+    -fx-background-color: linear-gradient(to right, #E3C578, #FFFFFF);
     -fx-text-fill: a67805;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-border-width: 2px;
-    -fx-border-radius: 1;
+    -fx-border-width: 2.5px;
     -fx-cursor: hand;
     -fx-border-color: #a67805;
 }
 
 /* Hover state */
 .button:hover {
-    -fx-background-color: linear-gradient(to right, #d0b87a, #FFFFFF);
+    -fx-background-color: linear-gradient(to right, #FFFFFF, #d0b87a);
     -fx-border-color: white;
-    -fx-text-fill: white;
-    -fx-border-width: 3;
+    -fx-border-width: 4;
 }
 
 /* Pressed (armed) state */
 .button:pressed {
-    -fx-background-color: linear-gradient(to right, #d5a939, #FFFFFF);
+    -fx-background-color: linear-gradient(to right, #E3C578, #FFFFFF);
     -fx-border-color: white;
-    -fx-text-fill: white;
-    -fx-border-width: 3;
+    -fx-border-width: 4;
 }
 
 .button:disabled {
-    -fx-background-color: linear-gradient(to right, #eee3c6, #FFFFFF);
-        -fx-text-fill: a67805;
-        -fx-font-size: 14px;
-        -fx-font-weight: bold;
-        -fx-border-width: 2px;
-        -fx-border-radius: 1;
-        -fx-cursor: default;
-        -fx-border-color: #a67805;
-        -fx-opacity: 1.0;
+    -fx-background-color: linear-gradient(to right, #E3C578, #FFFFFF);
+    -fx-text-fill: a67805;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-width: 4px;
+    -fx-border-radius: 1;
+    -fx-cursor: default;
+    -fx-border-color: #FFFFFF;
+    -fx-opacity: 1.0;
 }
 
 .slider {
