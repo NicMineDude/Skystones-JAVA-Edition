@@ -211,8 +211,6 @@ public class GameApp extends Application {
             }
         });
 
-
-
         view.getOptionPane().getBackToMenu().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
